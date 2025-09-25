@@ -11,5 +11,5 @@ export function handleLoginSuccess(formValues) {
         saveToSessionStorage('user', { email, password });
     }
 
-    window.location.href = '../pages/index.html';
+    window.location.href = '../pages/dashboard.html';
 }

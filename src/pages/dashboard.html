@@ -4,6 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard | Todo List App</title>
+    <link rel="stylesheet" href="../../dist/css/main.css">
   </head>
-  <body></body>
+  <body class="dashboard">
+    <main class="dashboard__main">
+      <header class="dashboard__header">
+        <h1 class="dashboard__title">Dashboard | Todo List App</h1>
+        <button logout-btn class="dashboard__logout-btn">Logout</button>
+      </header>
+
+      <section class="dashboard__section dashboard__section--create-task">
+        <h2 class="dashboard__section-title">Create Task</h2>
+        <form class="dashboard__create-task-form">
+          <input type="text" placeholder="Task Title" class="dashboard__create-task-input">
+          <input type="text" placeholder="Task Description" class="dashboard__create-task-input">
+          <button type="submit" class="dashboard__create-task-btn">Create Task</button>
+        </form>
+
+      </section>
+
+      <section class="dashboard__section dashboard__section--active">
+        <h2 class="dashboard__section-title">Active Tasks</h2>
+        <div class="dashboard__task-list">
+          <div class="task-card">
+            <div class="task-card__content">
+              <h3 class="task-card__title">Sample Task</h3>
+              <p class="task-card__description">This is a sample task description</p>
+            </div>
+            <div class="task-card__actions">
+              <button class="task-card__btn task-card__btn--complete">Complete</button>
+              <button class="task-card__btn task-card__btn--edit">Edit</button>
+              <button class="task-card__btn task-card__btn--delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="dashboard__section dashboard__section--completed">
+        <h2 class="dashboard__section-title">Completed Tasks</h2>
+        <div class="dashboard__task-list">
+          <div class="task-card task-card--completed">
+            <div class="task-card__content">
+              <h3 class="task-card__title">Completed Task</h3>
+              <p class="task-card__description">This task has been completed</p>
+            </div>
+            <div class="task-card__actions">
+              <button class="task-card__btn task-card__btn--restore">Restore</button>
+              <button class="task-card__btn task-card__btn--delete">Delete</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+
+  <script type="module" src="../js/dashboard.js"></script>
 </html>

@@ -4,6 +4,18 @@ import { formValidation, passwordMatch } from '../utils/form-validations.js';
 import { authMiddleware } from '../middleware/auth.middleware.js';
 import { handleLoginSuccess } from '../handlers/login-success.handler.js';
 
+function togglePassword() {
+    const type = passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
+    eyeIcon.src = type === 'password' ? '../assets/svgs/eye.svg' : '../assets/svgs/eye-slash.svg';
+}
+
+function resetFormErrors() {
+    errorMessage[0].innerHTML = '';
+    errorMessage[1].innerHTML = '';
+    formErrorMessage.innerHTML = '';
+    formErrorMessage.style.display = 'none';
+}
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -22,17 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const errorMessage = document.querySelectorAll('#errorMessage');
     const formErrorMessage = document.getElementById('formErrorMessage');
     
-    function togglePassword() {
-        const type = passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
-        eyeIcon.src = type === 'password' ? '../assets/svgs/eye.svg' : '../assets/svgs/eye-slash.svg';
-    }
-
-    function resetFormErrors() {
-        errorMessage[0].innerHTML = '';
-        errorMessage[1].innerHTML = '';
-        formErrorMessage.innerHTML = '';
-        formErrorMessage.style.display = 'none';
-    }
+    
 
     const handleLogin = (e) => {
         e.preventDefault();

@@ -1,0 +1,322 @@
+.dashboard {
+  min-height: 100vh;
+  background: linear-gradient(135deg, $color-primary 0%, $color-accent 100%);
+  font-family: $font-family-base;
+  padding: 0;
+  margin: 0;
+
+  &__main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: $space-xl;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba($color-surface, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $space-lg $space-xl;
+    margin-bottom: $space-xl;
+    box-shadow: $shadow-lg;
+    border: $border-width-thin solid rgba($color-surface, 0.2);
+  }
+
+  &__title {
+    color: $color-text-primary;
+    font-size: $font-size-xxl;
+    font-weight: $font-weight-bold;
+    margin: 0;
+    background: linear-gradient(135deg, $color-primary, $color-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &__logout-btn {
+    background: linear-gradient(135deg, $color-error, #e53e3e);
+    color: $color-text-light;
+    border: none;
+    padding: $space-sm $space-lg;
+    border-radius: $border-radius-md;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $transition-medium;
+    box-shadow: $shadow-md;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: $shadow-lg;
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__section {
+    background: rgba($color-surface, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: $border-radius-lg;
+    padding: $space-xl;
+    margin-bottom: $space-xl;
+    box-shadow: $shadow-lg;
+    border: $border-width-thin solid rgba($color-surface, 0.2);
+
+    &--active {
+      border-left: 4px solid $color-primary;
+    }
+
+    &--completed {
+      border-left: 4px solid $color-secondary;
+    }
+  }
+
+  &__create-task-form {
+    display: flex;
+    flex-direction: column;
+    gap: $space-md;
+  }
+
+  &__create-task-input {
+    padding: $space-md;
+    border: $border-width-thin solid $color-border;
+    border-radius: $border-radius-md;
+    font-size: $font-size-md;
+    font-family: $font-family-base;
+  }
+
+  &__create-task-btn {
+    padding: $space-md;
+    border: $border-width-thin solid $color-border;
+    border-radius: $border-radius-md;
+    font-size: $font-size-md;
+    font-family: $font-family-base;
+    background: $color-primary;
+    color: $color-text-light;
+    cursor: pointer;
+    transition: $transition-fast;
+
+    &:hover {
+      background: $color-primary-dark;
+      transform: translateY(-1px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__section-title {
+    color: $color-text-primary;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-medium;
+    margin: 0 0 $space-lg 0;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '';
+      width: 4px;
+      height: 24px;
+      background: linear-gradient(135deg, $color-primary, $color-accent);
+      border-radius: 2px;
+      margin-right: $space-sm;
+    }
+  }
+
+  &__task-list {
+    display: grid;
+    gap: $space-md;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  }
+}
+
+
+.task-card {
+  background: $color-surface;
+  border-radius: 12px;
+  padding: $space-lg;
+  box-shadow: $shadow-md;
+  border: $border-width-thin solid $color-border;
+  transition: all $transition-medium;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(135deg, $color-primary, $color-accent);
+  }
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-lg;
+  }
+
+  &--completed {
+    opacity: 0.7;
+    background: #f7fafc;
+
+    .task-card__title {
+      text-decoration: line-through;
+      color: $color-text-secondary;
+    }
+
+    .task-card__description {
+      color: $color-text-secondary;
+    }
+  }
+
+  &__content {
+    margin-bottom: $space-md;
+  }
+
+  &__title {
+    color: $color-text-primary;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-medium;
+    margin: 0 0 $space-xs 0;
+    line-height: 1.4;
+  }
+
+  &__description {
+    color: $color-text-secondary;
+    font-size: $font-size-sm;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $space-xs;
+    flex-wrap: wrap;
+  }
+
+  &__btn {
+    padding: $space-xs $space-md;
+    border: none;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+    cursor: pointer;
+    transition: all $transition-fast;
+    text-transform: capitalize;
+
+    &--complete {
+      background: $color-primary;
+      color: $color-text-light;
+
+      &:hover {
+        background: $color-primary-dark;
+        transform: translateY(-1px);
+      }
+    }
+
+    &--edit {
+      background: $color-accent;
+      color: $color-text-light;
+
+      &:hover {
+        background: $color-accent-dark;
+        transform: translateY(-1px);
+      }
+    }
+
+    &--delete {
+      background: $color-error;
+      color: $color-text-light;
+
+      &:hover {
+        background: #e53e3e;
+        transform: translateY(-1px);
+      }
+    }
+
+    &--restore {
+      background: $color-secondary;
+      color: $color-text-light;
+
+      &:hover {
+        background: $color-secondary-dark;
+        transform: translateY(-1px);
+      }
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: $bp-sm) {
+  .dashboard {
+    &__main {
+      padding: $space-md;
+    }
+
+    &__header {
+      flex-direction: column;
+      gap: $space-md;
+      text-align: center;
+    }
+
+    &__title {
+      font-size: $font-size-xl;
+    }
+
+    &__section {
+      padding: $space-lg;
+    }
+
+    &__task-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .task-card {
+    &__actions {
+      justify-content: center;
+    }
+
+    &__btn {
+      flex: 1;
+      min-width: 80px;
+    }
+  }
+}
+
+@media (max-width: $bp-xs) {
+  .dashboard {
+    &__header {
+      padding: $space-md;
+    }
+
+    &__title {
+      font-size: $font-size-lg;
+    }
+
+    &__section {
+      padding: $space-md;
+    }
+  }
+
+  .task-card {
+    padding: $space-md;
+
+    &__actions {
+      flex-direction: column;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+}
