@@ -1,9 +1,18 @@
 import { FORM_VALIDATIONS } from '../constants/constants.js';
 import { USER_ACCOUNT } from '../data/users.data.js';
 import { formValidation, passwordMatch } from '../utils/form-validations.js';
+import { authMiddleware } from '../middleware/auth.middleware.js';
+import { handleLoginSuccess } from '../handlers/login-success.handler.js';
 
 
 document.addEventListener('DOMContentLoaded', () => {
+
+    authMiddleware((isAuthenticated) => {
+        if(isAuthenticated) {
+            window.location.href = '../pages/index.html';
+        }
+    });
+
     const loginForm = document.querySelector('#loginForm');
     const emailInput = document.querySelector('#email');
     const passwordInput = document.querySelector('#password');
@@ -53,8 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
 
-        // TODO set in local storage and redirect to home page
-        console.log('Login form submitted');
+        handleLoginSuccess(formValues);
     }
 
     
