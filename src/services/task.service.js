@@ -47,6 +47,7 @@ export const updateTask = (taskId, updatedTask) => {
 
 export const deleteTask = (taskId) => {
     const updatedTasks = TASKS.filter(task => task.id !== taskId);
+    console.log(updateTask)
     saveToLocalStorage('tasks', updatedTasks);
     return updatedTasks;
 }
